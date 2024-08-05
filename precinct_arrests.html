@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5c992252bb8b8b9332b8719521e57dd4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 150px; height: 400px; 
+     background-color: white; border:2px solid grey; z-index:9999; font-size:14px;
+     overflow-y: auto;">
+     <b>Arrests by Precinct</b><br>
+&nbsp;<i class="fa fa-circle" style="color:#1f77b4"></i> Precinct 1<br>&nbsp;<i class="fa fa-circle" style="color:#1f77b4"></i> Precinct 5<br>&nbsp;<i class="fa fa-circle" style="color:#1f77b4"></i> Precinct 6<br>&nbsp;<i class="fa fa-circle" style="color:#1f77b4"></i> Precinct 7<br>&nbsp;<i class="fa fa-circle" style="color:#aec7e8"></i> Precinct 9<br>&nbsp;<i class="fa fa-circle" style="color:#aec7e8"></i> Precinct 10<br>&nbsp;<i class="fa fa-circle" style="color:#aec7e8"></i> Precinct 13<br>&nbsp;<i class="fa fa-circle" style="color:#aec7e8"></i> Precinct 14<br>&nbsp;<i class="fa fa-circle" style="color:#ff7f0e"></i> Precinct 17<br>&nbsp;<i class="fa fa-circle" style="color:#ff7f0e"></i> Precinct 18<br>&nbsp;<i class="fa fa-circle" style="color:#ff7f0e"></i> Precinct 19<br>&nbsp;<i class="fa fa-circle" style="color:#ff7f0e"></i> Precinct 20<br>&nbsp;<i class="fa fa-circle" style="color:#ffbb78"></i> Precinct 22<br>&nbsp;<i class="fa fa-circle" style="color:#ffbb78"></i> Precinct 23<br>&nbsp;<i class="fa fa-circle" style="color:#ffbb78"></i> Precinct 24<br>&nbsp;<i class="fa fa-circle" style="color:#ffbb78"></i> Precinct 25<br>&nbsp;<i class="fa fa-circle" style="color:#2ca02c"></i> Precinct 26<br>&nbsp;<i class="fa fa-circle" style="color:#2ca02c"></i> Precinct 28<br>&nbsp;<i class="fa fa-circle" style="color:#2ca02c"></i> Precinct 30<br>&nbsp;<i class="fa fa-circle" style="color:#98df8a"></i> Precinct 32<br>&nbsp;<i class="fa fa-circle" style="color:#98df8a"></i> Precinct 33<br>&nbsp;<i class="fa fa-circle" style="color:#98df8a"></i> Precinct 34<br>&nbsp;<i class="fa fa-circle" style="color:#98df8a"></i> Precinct 40<br>&nbsp;<i class="fa fa-circle" style="color:#d62728"></i> Precinct 41<br>&nbsp;<i class="fa fa-circle" style="color:#d62728"></i> Precinct 42<br>&nbsp;<i class="fa fa-circle" style="color:#d62728"></i> Precinct 43<br>&nbsp;<i class="fa fa-circle" style="color:#d62728"></i> Precinct 44<br>&nbsp;<i class="fa fa-circle" style="color:#ff9896"></i> Precinct 45<br>&nbsp;<i class="fa fa-circle" style="color:#ff9896"></i> Precinct 46<br>&nbsp;<i class="fa fa-circle" style="color:#ff9896"></i> Precinct 47<br>&nbsp;<i class="fa fa-circle" style="color:#ff9896"></i> Precinct 48<br>&nbsp;<i class="fa fa-circle" style="color:#9467bd"></i> Precinct 49<br>&nbsp;<i class="fa fa-circle" style="color:#9467bd"></i> Precinct 50<br>&nbsp;<i class="fa fa-circle" style="color:#9467bd"></i> Precinct 52<br>&nbsp;<i class="fa fa-circle" style="color:#9467bd"></i> Precinct 60<br>&nbsp;<i class="fa fa-circle" style="color:#c5b0d5"></i> Precinct 61<br>&nbsp;<i class="fa fa-circle" style="color:#c5b0d5"></i> Precinct 62<br>&nbsp;<i class="fa fa-circle" style="color:#c5b0d5"></i> Precinct 63<br>&nbsp;<i class="fa fa-circle" style="color:#8c564b"></i> Precinct 66<br>&nbsp;<i class="fa fa-circle" style="color:#8c564b"></i> Precinct 67<br>&nbsp;<i class="fa fa-circle" style="color:#8c564b"></i> Precinct 68<br>&nbsp;<i class="fa fa-circle" style="color:#8c564b"></i> Precinct 69<br>&nbsp;<i class="fa fa-circle" style="color:#c49c94"></i> Precinct 70<br>&nbsp;<i class="fa fa-circle" style="color:#c49c94"></i> Precinct 71<br>&nbsp;<i class="fa fa-circle" style="color:#c49c94"></i> Precinct 72<br>&nbsp;<i class="fa fa-circle" style="color:#c49c94"></i> Precinct 73<br>&nbsp;<i class="fa fa-circle" style="color:#e377c2"></i> Precinct 75<br>&nbsp;<i class="fa fa-circle" style="color:#e377c2"></i> Precinct 76<br>&nbsp;<i class="fa fa-circle" style="color:#e377c2"></i> Precinct 77<br>&nbsp;<i class="fa fa-circle" style="color:#e377c2"></i> Precinct 78<br>&nbsp;<i class="fa fa-circle" style="color:#f7b6d2"></i> Precinct 79<br>&nbsp;<i class="fa fa-circle" style="color:#f7b6d2"></i> Precinct 81<br>&nbsp;<i class="fa fa-circle" style="color:#f7b6d2"></i> Precinct 83<br>&nbsp;<i class="fa fa-circle" style="color:#f7b6d2"></i> Precinct 84<br>&nbsp;<i class="fa fa-circle" style="color:#7f7f7f"></i> Precinct 88<br>&nbsp;<i class="fa fa-circle" style="color:#7f7f7f"></i> Precinct 90<br>&nbsp;<i class="fa fa-circle" style="color:#7f7f7f"></i> Precinct 94<br>&nbsp;<i class="fa fa-circle" style="color:#c7c7c7"></i> Precinct 100<br>&nbsp;<i class="fa fa-circle" style="color:#c7c7c7"></i> Precinct 101<br>&nbsp;<i class="fa fa-circle" style="color:#c7c7c7"></i> Precinct 102<br>&nbsp;<i class="fa fa-circle" style="color:#c7c7c7"></i> Precinct 103<br>&nbsp;<i class="fa fa-circle" style="color:#bcbd22"></i> Precinct 104<br>&nbsp;<i class="fa fa-circle" style="color:#bcbd22"></i> Precinct 105<br>&nbsp;<i class="fa fa-circle" style="color:#bcbd22"></i> Precinct 106<br>&nbsp;<i class="fa fa-circle" style="color:#bcbd22"></i> Precinct 107<br>&nbsp;<i class="fa fa-circle" style="color:#dbdb8d"></i> Precinct 108<br>&nbsp;<i class="fa fa-circle" style="color:#dbdb8d"></i> Precinct 109<br>&nbsp;<i class="fa fa-circle" style="color:#dbdb8d"></i> Precinct 110<br>&nbsp;<i class="fa fa-circle" style="color:#dbdb8d"></i> Precinct 111<br>&nbsp;<i class="fa fa-circle" style="color:#17becf"></i> Precinct 112<br>&nbsp;<i class="fa fa-circle" style="color:#17becf"></i> Precinct 113<br>&nbsp;<i class="fa fa-circle" style="color:#17becf"></i> Precinct 114<br>&nbsp;<i class="fa fa-circle" style="color:#17becf"></i> Precinct 115<br>&nbsp;<i class="fa fa-circle" style="color:#9edae5"></i> Precinct 120<br>&nbsp;<i class="fa fa-circle" style="color:#9edae5"></i> Precinct 121<br>&nbsp;<i class="fa fa-circle" style="color:#9edae5"></i> Precinct 122<br>&nbsp;<i class="fa fa-circle" style="color:#9edae5"></i> Precinct 123<br></div>
+    
+            <div class="folium-map" id="map_5c992252bb8b8b9332b8719521e57dd4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5c992252bb8b8b9332b8719521e57dd4 = L.map(
+                "map_5c992252bb8b8b9332b8719521e57dd4",
+                {
+                    center: [40.73807972367184, -73.92336158007453],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e59baf2dc74816823a534dee65ede476 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_e59baf2dc74816823a534dee65ede476.addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+            var circle_marker_89f75b2d4f22cb1387fabb1a6749e728 = L.circleMarker(
+                [40.71014997932633, -73.99512506814509],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.271269923822926, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_0a275a9e22f1a1156d4ea88be99d787f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_99162b85a8c566246ab63ebc217f7e7a = $(`<div id="html_99162b85a8c566246ab63ebc217f7e7a" style="width: 100.0%; height: 100.0%;">Precinct 1: 12122 arrests</div>`)[0];
+                popup_0a275a9e22f1a1156d4ea88be99d787f.setContent(html_99162b85a8c566246ab63ebc217f7e7a);
+            
+        
+
+        circle_marker_89f75b2d4f22cb1387fabb1a6749e728.bindPopup(popup_0a275a9e22f1a1156d4ea88be99d787f)
+        ;
+
+        
+    
+    
+            var circle_marker_27bc73b83575c4805318eebd566a66dc = L.circleMarker(
+                [40.716299998324054, -73.99919053107253],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.618931073515466, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_a4ff86edf3139f0393c12a55872ca512 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f181a4c5cd1348e7418b3bad96352873 = $(`<div id="html_f181a4c5cd1348e7418b3bad96352873" style="width: 100.0%; height: 100.0%;">Precinct 5: 16499 arrests</div>`)[0];
+                popup_a4ff86edf3139f0393c12a55872ca512.setContent(html_f181a4c5cd1348e7418b3bad96352873);
+            
+        
+
+        circle_marker_27bc73b83575c4805318eebd566a66dc.bindPopup(popup_a4ff86edf3139f0393c12a55872ca512)
+        ;
+
+        
+    
+    
+            var circle_marker_5918a5eed9adb25c91776834144703d4 = L.circleMarker(
+                [40.73351057077586, -74.00153364510668],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.188270566280172, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_3e0411e689085d59d3ea09e90aec3fef = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9d817361299843e5a3dc9b5f86cd5871 = $(`<div id="html_9d817361299843e5a3dc9b5f86cd5871" style="width: 100.0%; height: 100.0%;">Precinct 6: 10706 arrests</div>`)[0];
+                popup_3e0411e689085d59d3ea09e90aec3fef.setContent(html_9d817361299843e5a3dc9b5f86cd5871);
+            
+        
+
+        circle_marker_5918a5eed9adb25c91776834144703d4.bindPopup(popup_3e0411e689085d59d3ea09e90aec3fef)
+        ;
+
+        
+    
+    
+            var circle_marker_c530cb55bb4d672fa5fc62a2f005c921 = L.circleMarker(
+                [40.71661200145579, -73.98508976311649],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.856334322513538, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_91790f85cefff33f844997c66b4c96c7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8eadff3dd56393c3cc06819abd627abc = $(`<div id="html_8eadff3dd56393c3cc06819abd627abc" style="width: 100.0%; height: 100.0%;">Precinct 7: 10272 arrests</div>`)[0];
+                popup_91790f85cefff33f844997c66b4c96c7.setContent(html_8eadff3dd56393c3cc06819abd627abc);
+            
+        
+
+        circle_marker_c530cb55bb4d672fa5fc62a2f005c921.bindPopup(popup_91790f85cefff33f844997c66b4c96c7)
+        ;
+
+        
+    
+    
+            var circle_marker_027552cf3ee6940affbc435e7c11de78 = L.circleMarker(
+                [40.72633008826889, -73.98475314630008],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#aec7e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.505277327377858, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_15e37b339ffbfa2162f0b701997168a8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ab5563ff38888e4c6faa39c02243aa88 = $(`<div id="html_ab5563ff38888e4c6faa39c02243aa88" style="width: 100.0%; height: 100.0%;">Precinct 9: 9813 arrests</div>`)[0];
+                popup_15e37b339ffbfa2162f0b701997168a8.setContent(html_ab5563ff38888e4c6faa39c02243aa88);
+            
+        
+
+        circle_marker_027552cf3ee6940affbc435e7c11de78.bindPopup(popup_15e37b339ffbfa2162f0b701997168a8)
+        ;
+
+        
+    
+    
+            var circle_marker_0c4f26c4ee76481285a47703ff2a5631 = L.circleMarker(
+                [40.74709140517083, -74.00020003536473],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#aec7e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.914063695046961, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_70213dc124ff8376300fd3f7b5cd51ff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a92dff3f1aa93911bc826ab9e239be3 = $(`<div id="html_7a92dff3f1aa93911bc826ab9e239be3" style="width: 100.0%; height: 100.0%;">Precinct 10: 9040 arrests</div>`)[0];
+                popup_70213dc124ff8376300fd3f7b5cd51ff.setContent(html_7a92dff3f1aa93911bc826ab9e239be3);
+            
+        
+
+        circle_marker_0c4f26c4ee76481285a47703ff2a5631.bindPopup(popup_70213dc124ff8376300fd3f7b5cd51ff)
+        ;
+
+        
+    
+    
+            var circle_marker_85cbc27b6b8ce6e8da185076c6504419 = L.circleMarker(
+                [40.73852221652818, -73.9855486668251],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#aec7e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.473582769908527, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_a17b0f3731efea596bbef7538bbf1c73 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_24fc0a7378433c6f2414a36a9e18b130 = $(`<div id="html_24fc0a7378433c6f2414a36a9e18b130" style="width: 100.0%; height: 100.0%;">Precinct 13: 13694 arrests</div>`)[0];
+                popup_a17b0f3731efea596bbef7538bbf1c73.setContent(html_24fc0a7378433c6f2414a36a9e18b130);
+            
+        
+
+        circle_marker_85cbc27b6b8ce6e8da185076c6504419.bindPopup(popup_a17b0f3731efea596bbef7538bbf1c73)
+        ;
+
+        
+    
+    
+            var circle_marker_3cb3d95d0d8316e508d40bbf1dc8b3b3 = L.circleMarker(
+                [40.75300295139247, -73.98967316061429],
+                {"bubblingMouseEvents": true, "color": "#aec7e8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#aec7e8", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.0, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_01438f217e664ab7e031a904fa060f9d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9151b0af8748ae907b5afa788b178389 = $(`<div id="html_9151b0af8748ae907b5afa788b178389" style="width: 100.0%; height: 100.0%;">Precinct 14: 32687 arrests</div>`)[0];
+                popup_01438f217e664ab7e031a904fa060f9d.setContent(html_9151b0af8748ae907b5afa788b178389);
+            
+        
+
+        circle_marker_3cb3d95d0d8316e508d40bbf1dc8b3b3.bindPopup(popup_01438f217e664ab7e031a904fa060f9d)
+        ;
+
+        
+    
+    
+            var circle_marker_6ef9ee442e822f6ae9227c20dece4fad = L.circleMarker(
+                [40.753617982521085, -73.97182522241914],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.3151711689662555, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_e40fef3518ed5c1302d4551d44081d41 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_630a372ca201e8744b1c59371966b2d6 = $(`<div id="html_630a372ca201e8744b1c59371966b2d6" style="width: 100.0%; height: 100.0%;">Precinct 17: 5642 arrests</div>`)[0];
+                popup_e40fef3518ed5c1302d4551d44081d41.setContent(html_630a372ca201e8744b1c59371966b2d6);
+            
+        
+
+        circle_marker_6ef9ee442e822f6ae9227c20dece4fad.bindPopup(popup_e40fef3518ed5c1302d4551d44081d41)
+        ;
+
+        
+    
+    
+            var circle_marker_8d28bb83919ab427d1e440081ee4d5f1 = L.circleMarker(
+                [40.76343211683664, -73.98372833316985],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.638816654939273, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_c47c75dc0404efe49e2cc3151b8384a8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4798db12e48c7a33e744e44b21a75ca4 = $(`<div id="html_4798db12e48c7a33e744e44b21a75ca4" style="width: 100.0%; height: 100.0%;">Precinct 18: 16525 arrests</div>`)[0];
+                popup_c47c75dc0404efe49e2cc3151b8384a8.setContent(html_4798db12e48c7a33e744e44b21a75ca4);
+            
+        
+
+        circle_marker_8d28bb83919ab427d1e440081ee4d5f1.bindPopup(popup_c47c75dc0404efe49e2cc3151b8384a8)
+        ;
+
+        
+    
+    
+            var circle_marker_a7bbcda041c7a0ce69210663eea7ebb7 = L.circleMarker(
+                [40.77059574984267, -73.95957966808463],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.208156147703981, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_291289aaa8e69a17e7a0077547943833 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0177d2120af313fe2d27fb9aed751273 = $(`<div id="html_0177d2120af313fe2d27fb9aed751273" style="width: 100.0%; height: 100.0%;">Precinct 19: 10732 arrests</div>`)[0];
+                popup_291289aaa8e69a17e7a0077547943833.setContent(html_0177d2120af313fe2d27fb9aed751273);
+            
+        
+
+        circle_marker_a7bbcda041c7a0ce69210663eea7ebb7.bindPopup(popup_291289aaa8e69a17e7a0077547943833)
+        ;
+
+        
+    
+    
+            var circle_marker_dbfbb3afd55c47e5c959387bd42bf309 = L.circleMarker(
+                [40.779767977850234, -73.97962947388582],
+                {"bubblingMouseEvents": true, "color": "#ff7f0e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7f0e", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.566800256982898, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_9f89db8bde05df2499d8acf7549c3801 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_03cf9690f15d50dc8258c933adcc7c0e = $(`<div id="html_03cf9690f15d50dc8258c933adcc7c0e" style="width: 100.0%; height: 100.0%;">Precinct 20: 5971 arrests</div>`)[0];
+                popup_9f89db8bde05df2499d8acf7549c3801.setContent(html_03cf9690f15d50dc8258c933adcc7c0e);
+            
+        
+
+        circle_marker_dbfbb3afd55c47e5c959387bd42bf309.bindPopup(popup_9f89db8bde05df2499d8acf7549c3801)
+        ;
+
+        
+    
+    
+            var circle_marker_6ad62c3c5d8ff5a849534c80e847c462 = L.circleMarker(
+                [40.781885415846546, -73.96548222206138],
+                {"bubblingMouseEvents": true, "color": "#ffbb78", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffbb78", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 0.3158748126166366, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_a73d9745ec0c598e8fda4e3fa09c1987 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_69fea44673adcaf596baf2eb0d5baa10 = $(`<div id="html_69fea44673adcaf596baf2eb0d5baa10" style="width: 100.0%; height: 100.0%;">Precinct 22: 413 arrests</div>`)[0];
+                popup_a73d9745ec0c598e8fda4e3fa09c1987.setContent(html_69fea44673adcaf596baf2eb0d5baa10);
+            
+        
+
+        circle_marker_6ad62c3c5d8ff5a849534c80e847c462.bindPopup(popup_a73d9745ec0c598e8fda4e3fa09c1987)
+        ;
+
+        
+    
+    
+            var circle_marker_da307b184ecae5079a563098c9fbbe55 = L.circleMarker(
+                [40.79120528889927, -73.9453871729137],
+                {"bubblingMouseEvents": true, "color": "#ffbb78", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffbb78", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.41888212439196, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_3dc9791b7f6a3ddd339f84fb365ea1fc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_53135312b40c96ec239f4f6f07fce3e5 = $(`<div id="html_53135312b40c96ec239f4f6f07fce3e5" style="width: 100.0%; height: 100.0%;">Precinct 23: 12315 arrests</div>`)[0];
+                popup_3dc9791b7f6a3ddd339f84fb365ea1fc.setContent(html_53135312b40c96ec239f4f6f07fce3e5);
+            
+        
+
+        circle_marker_da307b184ecae5079a563098c9fbbe55.bindPopup(popup_3dc9791b7f6a3ddd339f84fb365ea1fc)
+        ;
+
+        
+    
+    
+            var circle_marker_b9dc7edf10e9fb0182e38601e6c091ab = L.circleMarker(
+                [40.795552021085896, -73.9683302582806],
+                {"bubblingMouseEvents": true, "color": "#ffbb78", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffbb78", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.579068131061278, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_e991c4e08b339eea65ee7bc835465096 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dffe60f7027f7f6b6f2e47a08fbc1a33 = $(`<div id="html_dffe60f7027f7f6b6f2e47a08fbc1a33" style="width: 100.0%; height: 100.0%;">Precinct 24: 8602 arrests</div>`)[0];
+                popup_e991c4e08b339eea65ee7bc835465096.setContent(html_dffe60f7027f7f6b6f2e47a08fbc1a33);
+            
+        
+
+        circle_marker_b9dc7edf10e9fb0182e38601e6c091ab.bindPopup(popup_e991c4e08b339eea65ee7bc835465096)
+        ;
+
+        
+    
+    
+            var circle_marker_bb34844aacc533969bcd516aef0d760c = L.circleMarker(
+                [40.79930153513425, -73.93372651566717],
+                {"bubblingMouseEvents": true, "color": "#ffbb78", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffbb78", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.992963563496192, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_f6aeb1136b25718c84a4d0f8483c4afc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d6f5669ef48648c445e6386561c2434a = $(`<div id="html_d6f5669ef48648c445e6386561c2434a" style="width: 100.0%; height: 100.0%;">Precinct 25: 19603 arrests</div>`)[0];
+                popup_f6aeb1136b25718c84a4d0f8483c4afc.setContent(html_d6f5669ef48648c445e6386561c2434a);
+            
+        
+
+        circle_marker_bb34844aacc533969bcd516aef0d760c.bindPopup(popup_f6aeb1136b25718c84a4d0f8483c4afc)
+        ;
+
+        
+    
+    
+            var circle_marker_e963c6214bf9f1e0428ecee91185f615 = L.circleMarker(
+                [40.81355220724089, -73.95686835502703],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.242910025392358, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_0b3bf0b50823e4f80a25a824f78163c6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_58193398997d070413eed911cc5a4830 = $(`<div id="html_58193398997d070413eed911cc5a4830" style="width: 100.0%; height: 100.0%;">Precinct 26: 6855 arrests</div>`)[0];
+                popup_0b3bf0b50823e4f80a25a824f78163c6.setContent(html_58193398997d070413eed911cc5a4830);
+            
+        
+
+        circle_marker_e963c6214bf9f1e0428ecee91185f615.bindPopup(popup_0b3bf0b50823e4f80a25a824f78163c6)
+        ;
+
+        
+    
+    
+            var circle_marker_c5d98c0f87574627dc15b4f5ce6223b8 = L.circleMarker(
+                [40.80568553770141, -73.95038017348764],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.622694037384893, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_3d0b218352d3291f4f5da84648713284 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_472e824e86d8cc54c82019bfa01b9275 = $(`<div id="html_472e824e86d8cc54c82019bfa01b9275" style="width: 100.0%; height: 100.0%;">Precinct 28: 11274 arrests</div>`)[0];
+                popup_3d0b218352d3291f4f5da84648713284.setContent(html_472e824e86d8cc54c82019bfa01b9275);
+            
+        
+
+        circle_marker_c5d98c0f87574627dc15b4f5ce6223b8.bindPopup(popup_3d0b218352d3291f4f5da84648713284)
+        ;
+
+        
+    
+    
+            var circle_marker_585ec958e777a1247843352ac7caccbf = L.circleMarker(
+                [40.82586783042042, -73.94781067364232],
+                {"bubblingMouseEvents": true, "color": "#2ca02c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.42074830972558, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_f1191c580343b1ab37bd67c86b091baf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_745562abad406348d5e8c12de0528272 = $(`<div id="html_745562abad406348d5e8c12de0528272" style="width: 100.0%; height: 100.0%;">Precinct 30: 8395 arrests</div>`)[0];
+                popup_f1191c580343b1ab37bd67c86b091baf.setContent(html_745562abad406348d5e8c12de0528272);
+            
+        
+
+        circle_marker_585ec958e777a1247843352ac7caccbf.bindPopup(popup_f1191c580343b1ab37bd67c86b091baf)
+        ;
+
+        
+    
+    
+            var circle_marker_cbd2a05e29dad1bdb465efe8027bdfe2 = L.circleMarker(
+                [40.81833290613153, -73.9423926582686],
+                {"bubblingMouseEvents": true, "color": "#98df8a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#98df8a", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.229601982439501, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_eac0f43e1e26f1ea9b5d814096963350 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b2acb23bc70ba7f70faab9340cbf59d2 = $(`<div id="html_b2acb23bc70ba7f70faab9340cbf59d2" style="width: 100.0%; height: 100.0%;">Precinct 32: 13375 arrests</div>`)[0];
+                popup_eac0f43e1e26f1ea9b5d814096963350.setContent(html_b2acb23bc70ba7f70faab9340cbf59d2);
+            
+        
+
+        circle_marker_cbd2a05e29dad1bdb465efe8027bdfe2.bindPopup(popup_eac0f43e1e26f1ea9b5d814096963350)
+        ;
+
+        
+    
+    
+            var circle_marker_ed69208e3967c3d9ff673bc6526f35f2 = L.circleMarker(
+                [40.84112874662181, -73.93835691223384],
+                {"bubblingMouseEvents": true, "color": "#98df8a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#98df8a", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.119435861351608, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_1e0ee323fd5f337570b49506286d8faf = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a4cbddcc06c13525c56d11658a84480e = $(`<div id="html_a4cbddcc06c13525c56d11658a84480e" style="width: 100.0%; height: 100.0%;">Precinct 33: 10616 arrests</div>`)[0];
+                popup_1e0ee323fd5f337570b49506286d8faf.setContent(html_a4cbddcc06c13525c56d11658a84480e);
+            
+        
+
+        circle_marker_ed69208e3967c3d9ff673bc6526f35f2.bindPopup(popup_1e0ee323fd5f337570b49506286d8faf)
+        ;
+
+        
+    
+    
+            var circle_marker_c089c2df29b6730256de1fb5840d219a = L.circleMarker(
+                [40.85737236982948, -73.92875305592993],
+                {"bubblingMouseEvents": true, "color": "#98df8a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#98df8a", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.891149386606296, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_d5984d9f4e3ff053e552096c7c3684d8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_457f3842c3b06056f1903c3a618caa0c = $(`<div id="html_457f3842c3b06056f1903c3a618caa0c" style="width: 100.0%; height: 100.0%;">Precinct 34: 11625 arrests</div>`)[0];
+                popup_d5984d9f4e3ff053e552096c7c3684d8.setContent(html_457f3842c3b06056f1903c3a618caa0c);
+            
+        
+
+        circle_marker_c089c2df29b6730256de1fb5840d219a.bindPopup(popup_d5984d9f4e3ff053e552096c7c3684d8)
+        ;
+
+        
+    
+    
+            var circle_marker_3b63a3d2c1ab820891547eedeee1e31b = L.circleMarker(
+                [40.81327705568189, -73.91910827797143],
+                {"bubblingMouseEvents": true, "color": "#98df8a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#98df8a", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.776669624009546, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_f846810b02323b9a3cbc453423d3512d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0d9fa978d8addb2342a225c086c91db7 = $(`<div id="html_0d9fa978d8addb2342a225c086c91db7" style="width: 100.0%; height: 100.0%;">Precinct 40: 32395 arrests</div>`)[0];
+                popup_f846810b02323b9a3cbc453423d3512d.setContent(html_0d9fa978d8addb2342a225c086c91db7);
+            
+        
+
+        circle_marker_3b63a3d2c1ab820891547eedeee1e31b.bindPopup(popup_f846810b02323b9a3cbc453423d3512d)
+        ;
+
+        
+    
+    
+            var circle_marker_fbf2e031e5df67c0e9b9e05e6803f938 = L.circleMarker(
+                [40.81703375068497, -73.89214104351338],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.412426958729771, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_49fe107ec868e5769f801f737774eb81 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f259dd2706e0234177da4cc7419f4597 = $(`<div id="html_f259dd2706e0234177da4cc7419f4597" style="width: 100.0%; height: 100.0%;">Precinct 41: 16229 arrests</div>`)[0];
+                popup_49fe107ec868e5769f801f737774eb81.setContent(html_f259dd2706e0234177da4cc7419f4597);
+            
+        
+
+        circle_marker_fbf2e031e5df67c0e9b9e05e6803f938.bindPopup(popup_49fe107ec868e5769f801f737774eb81)
+        ;
+
+        
+    
+    
+            var circle_marker_47a04b975c0c524e5e9d5cf3b628c0e8 = L.circleMarker(
+                [40.828831272501475, -73.9029781699212],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.062930216905803, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_63f622d50532b6a63f83aaff796f07c3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ba03d34aab9fff5ae3128424f806e380 = $(`<div id="html_ba03d34aab9fff5ae3128424f806e380" style="width: 100.0%; height: 100.0%;">Precinct 42: 18387 arrests</div>`)[0];
+                popup_63f622d50532b6a63f83aaff796f07c3.setContent(html_ba03d34aab9fff5ae3128424f806e380);
+            
+        
+
+        circle_marker_47a04b975c0c524e5e9d5cf3b628c0e8.bindPopup(popup_63f622d50532b6a63f83aaff796f07c3)
+        ;
+
+        
+    
+    
+            var circle_marker_874ee5e6f8e453baf6d41261337fab1b = L.circleMarker(
+                [40.82696031076261, -73.86638788889209],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.608682350781656, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_357e29dd428e8999e49f2574e223abb4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f799e2ff6b06c5104e61c1a7442b4827 = $(`<div id="html_f799e2ff6b06c5104e61c1a7442b4827" style="width: 100.0%; height: 100.0%;">Precinct 43: 23023 arrests</div>`)[0];
+                popup_357e29dd428e8999e49f2574e223abb4.setContent(html_f799e2ff6b06c5104e61c1a7442b4827);
+            
+        
+
+        circle_marker_874ee5e6f8e453baf6d41261337fab1b.bindPopup(popup_357e29dd428e8999e49f2574e223abb4)
+        ;
+
+        
+    
+    
+            var circle_marker_dc1e07167fa72df1f2a97d1c07f95e88 = L.circleMarker(
+                [40.8341045175516, -73.91981064386012],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.01107473919295, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_f48a4c890cc83835cafd6b1bee527c31 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1f24e4290e13abee9702244d121df404 = $(`<div id="html_1f24e4290e13abee9702244d121df404" style="width: 100.0%; height: 100.0%;">Precinct 44: 31394 arrests</div>`)[0];
+                popup_f48a4c890cc83835cafd6b1bee527c31.setContent(html_1f24e4290e13abee9702244d121df404);
+            
+        
+
+        circle_marker_dc1e07167fa72df1f2a97d1c07f95e88.bindPopup(popup_f48a4c890cc83835cafd6b1bee527c31)
+        ;
+
+        
+    
+    
+            var circle_marker_1a4a6473f3808f1e6c29681979e1efbc = L.circleMarker(
+                [40.83893565987991, -73.82890512967359],
+                {"bubblingMouseEvents": true, "color": "#ff9896", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9896", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.650992749411081, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_0bf51707f8df1bfe4bb6d2dfd03ff098 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_223293e0330a46ac7b4877951b35ab7d = $(`<div id="html_223293e0330a46ac7b4877951b35ab7d" style="width: 100.0%; height: 100.0%;">Precinct 45: 11311 arrests</div>`)[0];
+                popup_0bf51707f8df1bfe4bb6d2dfd03ff098.setContent(html_223293e0330a46ac7b4877951b35ab7d);
+            
+        
+
+        circle_marker_1a4a6473f3808f1e6c29681979e1efbc.bindPopup(popup_0bf51707f8df1bfe4bb6d2dfd03ff098)
+        ;
+
+        
+    
+    
+            var circle_marker_78290c9a525385fe4b5153f758627357 = L.circleMarker(
+                [40.853113805536644, -73.90488350698419],
+                {"bubblingMouseEvents": true, "color": "#ff9896", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9896", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.826291797962494, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_77176b24614a24a8a5af9eeb1e9996f2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bd392b1db0544d34ea74101b73376d82 = $(`<div id="html_bd392b1db0544d34ea74101b73376d82" style="width: 100.0%; height: 100.0%;">Precinct 46: 24615 arrests</div>`)[0];
+                popup_77176b24614a24a8a5af9eeb1e9996f2.setContent(html_bd392b1db0544d34ea74101b73376d82);
+            
+        
+
+        circle_marker_78290c9a525385fe4b5153f758627357.bindPopup(popup_77176b24614a24a8a5af9eeb1e9996f2)
+        ;
+
+        
+    
+    
+            var circle_marker_f2a2481bd04cf9242b18e83491b8ec63 = L.circleMarker(
+                [40.88595389234431, -73.85230768751747],
+                {"bubblingMouseEvents": true, "color": "#ff9896", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9896", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.614403279591276, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_554cde9673f2fe1775e93af04aba7d48 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6c176202d781bbe4413fdde20acf40f3 = $(`<div id="html_6c176202d781bbe4413fdde20acf40f3" style="width: 100.0%; height: 100.0%;">Precinct 47: 21723 arrests</div>`)[0];
+                popup_554cde9673f2fe1775e93af04aba7d48.setContent(html_6c176202d781bbe4413fdde20acf40f3);
+            
+        
+
+        circle_marker_f2a2481bd04cf9242b18e83491b8ec63.bindPopup(popup_554cde9673f2fe1775e93af04aba7d48)
+        ;
+
+        
+    
+    
+            var circle_marker_1e3bb1002a5c6f29aa07c8fbf0685dcd = L.circleMarker(
+                [40.84779112625012, -73.8917607312692],
+                {"bubblingMouseEvents": true, "color": "#ff9896", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9896", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.279744240829688, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_619782cd95507e8c040357890b2a4c04 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ffee98529f4299c0bc215f420955bcc3 = $(`<div id="html_ffee98529f4299c0bc215f420955bcc3" style="width: 100.0%; height: 100.0%;">Precinct 48: 17363 arrests</div>`)[0];
+                popup_619782cd95507e8c040357890b2a4c04.setContent(html_ffee98529f4299c0bc215f420955bcc3);
+            
+        
+
+        circle_marker_1e3bb1002a5c6f29aa07c8fbf0685dcd.bindPopup(popup_619782cd95507e8c040357890b2a4c04)
+        ;
+
+        
+    
+    
+            var circle_marker_cd7a400d1f348d69fa97e90df2363561 = L.circleMarker(
+                [40.85630439422604, -73.85473140690777],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.77376326980145, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_8a8c7c6a6b7c7152e84e8c8bbdd32e53 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8d82baca2ae1b5d4489d0f6df2bcefe6 = $(`<div id="html_8d82baca2ae1b5d4489d0f6df2bcefe6" style="width: 100.0%; height: 100.0%;">Precinct 49: 12779 arrests</div>`)[0];
+                popup_8a8c7c6a6b7c7152e84e8c8bbdd32e53.setContent(html_8d82baca2ae1b5d4489d0f6df2bcefe6);
+            
+        
+
+        circle_marker_cd7a400d1f348d69fa97e90df2363561.bindPopup(popup_8a8c7c6a6b7c7152e84e8c8bbdd32e53)
+        ;
+
+        
+    
+    
+            var circle_marker_ec65b5ab10df488cc73e1e4dc357de2e = L.circleMarker(
+                [40.881171442912624, -73.90347967887467],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.889956251720867, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_98b30831e3d2f57cb28d51a6ddd3e2f9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5faa7eb392c1edbd3a96db3c210060b3 = $(`<div id="html_5faa7eb392c1edbd3a96db3c210060b3" style="width: 100.0%; height: 100.0%;">Precinct 50: 7701 arrests</div>`)[0];
+                popup_98b30831e3d2f57cb28d51a6ddd3e2f9.setContent(html_5faa7eb392c1edbd3a96db3c210060b3);
+            
+        
+
+        circle_marker_ec65b5ab10df488cc73e1e4dc357de2e.bindPopup(popup_98b30831e3d2f57cb28d51a6ddd3e2f9)
+        ;
+
+        
+    
+    
+            var circle_marker_049c71a01e705967ebf05412c612dda2 = L.circleMarker(
+                [40.868511267672545, -73.89037139628707],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.72839355095298, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_7b704f270b6df2b696cd95664690670f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5c16888b46ece214773706048908dccb = $(`<div id="html_5c16888b46ece214773706048908dccb" style="width: 100.0%; height: 100.0%;">Precinct 52: 24487 arrests</div>`)[0];
+                popup_7b704f270b6df2b696cd95664690670f.setContent(html_5c16888b46ece214773706048908dccb);
+            
+        
+
+        circle_marker_049c71a01e705967ebf05412c612dda2.bindPopup(popup_7b704f270b6df2b696cd95664690670f)
+        ;
+
+        
+    
+    
+            var circle_marker_fc1b1043b265436b046f69cab732eac8 = L.circleMarker(
+                [40.5784316228867, -73.98034693567138],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.984886958117906, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_4a88771edf7e118f536417c61dc74ef1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_42ab5440ca098e4c27b1e538a792e922 = $(`<div id="html_42ab5440ca098e4c27b1e538a792e922" style="width: 100.0%; height: 100.0%;">Precinct 60: 15670 arrests</div>`)[0];
+                popup_4a88771edf7e118f536417c61dc74ef1.setContent(html_42ab5440ca098e4c27b1e538a792e922);
+            
+        
+
+        circle_marker_fc1b1043b265436b046f69cab732eac8.bindPopup(popup_4a88771edf7e118f536417c61dc74ef1)
+        ;
+
+        
+    
+    
+            var circle_marker_f0c3a02aa10faf66c0ff67b23936178b = L.circleMarker(
+                [40.59577922059372, -73.95435393347715],
+                {"bubblingMouseEvents": true, "color": "#c5b0d5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c5b0d5", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.314069813687399, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_1efd6e5c6706cbc57216e44ed38e9941 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_068e1419f06d4b478d06fdabd88a7a67 = $(`<div id="html_068e1419f06d4b478d06fdabd88a7a67" style="width: 100.0%; height: 100.0%;">Precinct 61: 9563 arrests</div>`)[0];
+                popup_1efd6e5c6706cbc57216e44ed38e9941.setContent(html_068e1419f06d4b478d06fdabd88a7a67);
+            
+        
+
+        circle_marker_f0c3a02aa10faf66c0ff67b23936178b.bindPopup(popup_1efd6e5c6706cbc57216e44ed38e9941)
+        ;
+
+        
+    
+    
+            var circle_marker_4c89469d488637b874b8c943e2a12754 = L.circleMarker(
+                [40.60564351680815, -73.99586071369093],
+                {"bubblingMouseEvents": true, "color": "#c5b0d5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c5b0d5", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.56952305197785, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_07a20bdb11eeecec4316cf155d598231 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b7c0fa800e682cd61cba7340ab2f7c99 = $(`<div id="html_b7c0fa800e682cd61cba7340ab2f7c99" style="width: 100.0%; height: 100.0%;">Precinct 62: 9897 arrests</div>`)[0];
+                popup_07a20bdb11eeecec4316cf155d598231.setContent(html_b7c0fa800e682cd61cba7340ab2f7c99);
+            
+        
+
+        circle_marker_4c89469d488637b874b8c943e2a12754.bindPopup(popup_07a20bdb11eeecec4316cf155d598231)
+        ;
+
+        
+    
+    
+            var circle_marker_4383dffd8f4f2a0ce69b0dc5ee8f9a37 = L.circleMarker(
+                [40.62305128362802, -73.92948264164961],
+                {"bubblingMouseEvents": true, "color": "#c5b0d5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c5b0d5", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.668186129042128, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_928387b8ab1ad805ed38cb45d1ae671d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_93ee078b855d147b63b9b1ae37f0f19f = $(`<div id="html_93ee078b855d147b63b9b1ae37f0f19f" style="width: 100.0%; height: 100.0%;">Precinct 63: 10026 arrests</div>`)[0];
+                popup_928387b8ab1ad805ed38cb45d1ae671d.setContent(html_93ee078b855d147b63b9b1ae37f0f19f);
+            
+        
+
+        circle_marker_4383dffd8f4f2a0ce69b0dc5ee8f9a37.bindPopup(popup_928387b8ab1ad805ed38cb45d1ae671d)
+        ;
+
+        
+    
+    
+            var circle_marker_b89d18cdd74af1a335cd889c7f22e80b = L.circleMarker(
+                [40.632531025469774, -73.98844182138008],
+                {"bubblingMouseEvents": true, "color": "#8c564b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c564b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.442530669685196, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_f4ced3a204206592a1d02e9226a77d2e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5e208ce9f56d4962a2a66119cad3e4bd = $(`<div id="html_5e208ce9f56d4962a2a66119cad3e4bd" style="width: 100.0%; height: 100.0%;">Precinct 66: 7116 arrests</div>`)[0];
+                popup_f4ced3a204206592a1d02e9226a77d2e.setContent(html_5e208ce9f56d4962a2a66119cad3e4bd);
+            
+        
+
+        circle_marker_b89d18cdd74af1a335cd889c7f22e80b.bindPopup(popup_f4ced3a204206592a1d02e9226a77d2e)
+        ;
+
+        
+    
+    
+            var circle_marker_2e6b9b1b25b14ab41f217d64af520bdc = L.circleMarker(
+                [40.65033935745373, -73.93858763021987],
+                {"bubblingMouseEvents": true, "color": "#8c564b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c564b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.352800807660538, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_a636d461357b2cf8f89eaa4ff2710a11 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_113af6e85f09383db69fb36461b94dc5 = $(`<div id="html_113af6e85f09383db69fb36461b94dc5" style="width: 100.0%; height: 100.0%;">Precinct 67: 18766 arrests</div>`)[0];
+                popup_a636d461357b2cf8f89eaa4ff2710a11.setContent(html_113af6e85f09383db69fb36461b94dc5);
+            
+        
+
+        circle_marker_2e6b9b1b25b14ab41f217d64af520bdc.bindPopup(popup_a636d461357b2cf8f89eaa4ff2710a11)
+        ;
+
+        
+    
+    
+            var circle_marker_c028baed179e33f4b12a5144524d76ca = L.circleMarker(
+                [40.62939210093356, -74.02145073083015],
+                {"bubblingMouseEvents": true, "color": "#8c564b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c564b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.404319760149295, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_f9b5e57d6c0f21ebac1f61df7b131517 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d10a6fd71587587f3949a7a872d5130b = $(`<div id="html_d10a6fd71587587f3949a7a872d5130b" style="width: 100.0%; height: 100.0%;">Precinct 68: 9681 arrests</div>`)[0];
+                popup_f9b5e57d6c0f21ebac1f61df7b131517.setContent(html_d10a6fd71587587f3949a7a872d5130b);
+            
+        
+
+        circle_marker_c028baed179e33f4b12a5144524d76ca.bindPopup(popup_f9b5e57d6c0f21ebac1f61df7b131517)
+        ;
+
+        
+    
+    
+            var circle_marker_905fe71ed9a6f022ef81c74a8a78310b = L.circleMarker(
+                [40.64287202789321, -73.90128774832384],
+                {"bubblingMouseEvents": true, "color": "#8c564b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c564b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.553063909199376, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_172af96a65172134a3fc9aadf3fa5b34 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a22d2fb4db1cf2bf3821103f5b56fc7d = $(`<div id="html_a22d2fb4db1cf2bf3821103f5b56fc7d" style="width: 100.0%; height: 100.0%;">Precinct 69: 8568 arrests</div>`)[0];
+                popup_172af96a65172134a3fc9aadf3fa5b34.setContent(html_a22d2fb4db1cf2bf3821103f5b56fc7d);
+            
+        
+
+        circle_marker_905fe71ed9a6f022ef81c74a8a78310b.bindPopup(popup_172af96a65172134a3fc9aadf3fa5b34)
+        ;
+
+        
+    
+    
+            var circle_marker_91c61612ffdad9bc81f0c2a693947d85 = L.circleMarker(
+                [40.63671813987517, -73.96222427492836],
+                {"bubblingMouseEvents": true, "color": "#c49c94", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c49c94", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.934775292929912, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_b52449ab37205612e8abf9159df7f4b0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_96533d37a2b9d496a4fde24abc667721 = $(`<div id="html_96533d37a2b9d496a4fde24abc667721" style="width: 100.0%; height: 100.0%;">Precinct 70: 14297 arrests</div>`)[0];
+                popup_b52449ab37205612e8abf9159df7f4b0.setContent(html_96533d37a2b9d496a4fde24abc667721);
+            
+        
+
+        circle_marker_91c61612ffdad9bc81f0c2a693947d85.bindPopup(popup_b52449ab37205612e8abf9159df7f4b0)
+        ;
+
+        
+    
+    
+            var circle_marker_e4b831ab726d3303155e9b92163521d4 = L.circleMarker(
+                [40.6632593338886, -73.946411480752],
+                {"bubblingMouseEvents": true, "color": "#c49c94", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c49c94", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.97604552268486, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_16379e476a73d97ddf99864d0c865695 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1103a253c88fc607d7f927c5182bba8e = $(`<div id="html_1103a253c88fc607d7f927c5182bba8e" style="width: 100.0%; height: 100.0%;">Precinct 71: 11736 arrests</div>`)[0];
+                popup_16379e476a73d97ddf99864d0c865695.setContent(html_1103a253c88fc607d7f927c5182bba8e);
+            
+        
+
+        circle_marker_e4b831ab726d3303155e9b92163521d4.bindPopup(popup_16379e476a73d97ddf99864d0c865695)
+        ;
+
+        
+    
+    
+            var circle_marker_8e6e260c256bbb9c0a7345e6cfc72717 = L.circleMarker(
+                [40.65050807608497, -74.00623562751419],
+                {"bubblingMouseEvents": true, "color": "#c49c94", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c49c94", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.897298620246582, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_f4224de5280a099bf37805af2afb8e83 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c4471c15f731167f41b858f86859f3d5 = $(`<div id="html_c4471c15f731167f41b858f86859f3d5" style="width: 100.0%; height: 100.0%;">Precinct 72: 14248 arrests</div>`)[0];
+                popup_f4224de5280a099bf37805af2afb8e83.setContent(html_c4471c15f731167f41b858f86859f3d5);
+            
+        
+
+        circle_marker_8e6e260c256bbb9c0a7345e6cfc72717.bindPopup(popup_f4224de5280a099bf37805af2afb8e83)
+        ;
+
+        
+    
+    
+            var circle_marker_12aad385a49602dd83c85a7951ffbbe8 = L.circleMarker(
+                [40.67005350792043, -73.91058752607948],
+                {"bubblingMouseEvents": true, "color": "#c49c94", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c49c94", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.553981705265087, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_0b84b9c5fcb33d3388fc22e777abee04 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d719e75d1822f60308b3c561ac99ff7d = $(`<div id="html_d719e75d1822f60308b3c561ac99ff7d" style="width: 100.0%; height: 100.0%;">Precinct 73: 21644 arrests</div>`)[0];
+                popup_0b84b9c5fcb33d3388fc22e777abee04.setContent(html_d719e75d1822f60308b3c561ac99ff7d);
+            
+        
+
+        circle_marker_12aad385a49602dd83c85a7951ffbbe8.bindPopup(popup_0b84b9c5fcb33d3388fc22e777abee04)
+        ;
+
+        
+    
+    
+            var circle_marker_d65622658bd0d07bcac2bd31b685894a = L.circleMarker(
+                [40.66938776537207, -73.88299338452963],
+                {"bubblingMouseEvents": true, "color": "#e377c2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e377c2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.96365527579772, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_75dc7db859a1c01373f4af158db6e036 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1ed1f523f340b375a540df086b3122bc = $(`<div id="html_1ed1f523f340b375a540df086b3122bc" style="width: 100.0%; height: 100.0%;">Precinct 75: 31332 arrests</div>`)[0];
+                popup_75dc7db859a1c01373f4af158db6e036.setContent(html_1ed1f523f340b375a540df086b3122bc);
+            
+        
+
+        circle_marker_d65622658bd0d07bcac2bd31b685894a.bindPopup(popup_75dc7db859a1c01373f4af158db6e036)
+        ;
+
+        
+    
+    
+            var circle_marker_47bac9fae7e662dfc24b29deb47cd4e5 = L.circleMarker(
+                [40.67986533116584, -74.00055891095504],
+                {"bubblingMouseEvents": true, "color": "#e377c2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e377c2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.699880686511458, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_ea15cc9f6a4ca463e9096dd2f14c3b68 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e98ed52198ce7a9afa5bff8302d23908 = $(`<div id="html_e98ed52198ce7a9afa5bff8302d23908" style="width: 100.0%; height: 100.0%;">Precinct 76: 6145 arrests</div>`)[0];
+                popup_ea15cc9f6a4ca463e9096dd2f14c3b68.setContent(html_e98ed52198ce7a9afa5bff8302d23908);
+            
+        
+
+        circle_marker_47bac9fae7e662dfc24b29deb47cd4e5.bindPopup(popup_ea15cc9f6a4ca463e9096dd2f14c3b68)
+        ;
+
+        
+    
+    
+            var circle_marker_24017c847f38687de64147292f5c58db = L.circleMarker(
+                [40.67376580109199, -73.93778262308209],
+                {"bubblingMouseEvents": true, "color": "#e377c2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e377c2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.257135864410929, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_27f7a35ce475ce1ababdfde5d3f66d34 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_436fa1247156c7fa358f33fa40a74385 = $(`<div id="html_436fa1247156c7fa358f33fa40a74385" style="width: 100.0%; height: 100.0%;">Precinct 77: 13411 arrests</div>`)[0];
+                popup_27f7a35ce475ce1ababdfde5d3f66d34.setContent(html_436fa1247156c7fa358f33fa40a74385);
+            
+        
+
+        circle_marker_24017c847f38687de64147292f5c58db.bindPopup(popup_27f7a35ce475ce1ababdfde5d3f66d34)
+        ;
+
+        
+    
+    
+            var circle_marker_1e4e2e8288c3736c0c219b0ee2c34869 = L.circleMarker(
+                [40.67855584644676, -73.97850073504137],
+                {"bubblingMouseEvents": true, "color": "#e377c2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e377c2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.437941689356625, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_244957a0ea029279af94de9a1b37ce84 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e8a078dab9db07ded77dc3546cead5ed = $(`<div id="html_e8a078dab9db07ded77dc3546cead5ed" style="width: 100.0%; height: 100.0%;">Precinct 78: 7110 arrests</div>`)[0];
+                popup_244957a0ea029279af94de9a1b37ce84.setContent(html_e8a078dab9db07ded77dc3546cead5ed);
+            
+        
+
+        circle_marker_1e4e2e8288c3736c0c219b0ee2c34869.bindPopup(popup_244957a0ea029279af94de9a1b37ce84)
+        ;
+
+        
+    
+    
+            var circle_marker_635f00f3c30544d7381787055028d4a7 = L.circleMarker(
+                [40.68887483959554, -73.94733038975816],
+                {"bubblingMouseEvents": true, "color": "#f7b6d2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7b6d2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.446079481139291, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_866ecdfc10b088a7f80f1871d7635763 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ef292d31f114941db8bdd45c44847e38 = $(`<div id="html_ef292d31f114941db8bdd45c44847e38" style="width: 100.0%; height: 100.0%;">Precinct 79: 16273 arrests</div>`)[0];
+                popup_866ecdfc10b088a7f80f1871d7635763.setContent(html_ef292d31f114941db8bdd45c44847e38);
+            
+        
+
+        circle_marker_635f00f3c30544d7381787055028d4a7.bindPopup(popup_866ecdfc10b088a7f80f1871d7635763)
+        ;
+
+        
+    
+    
+            var circle_marker_288611fc9634ffe81d01691c176957c8 = L.circleMarker(
+                [40.68714414206166, -73.92816835972941],
+                {"bubblingMouseEvents": true, "color": "#f7b6d2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7b6d2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.213877076513599, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_51f3179eab6f1e33ccfdbaad47d42792 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_91d6579ed5223c3f9113871f972cc2d3 = $(`<div id="html_91d6579ed5223c3f9113871f972cc2d3" style="width: 100.0%; height: 100.0%;">Precinct 81: 9432 arrests</div>`)[0];
+                popup_51f3179eab6f1e33ccfdbaad47d42792.setContent(html_91d6579ed5223c3f9113871f972cc2d3);
+            
+        
+
+        circle_marker_288611fc9634ffe81d01691c176957c8.bindPopup(popup_51f3179eab6f1e33ccfdbaad47d42792)
+        ;
+
+        
+    
+    
+            var circle_marker_e6adf3f0928c7f41d8f051b7f2c313db = L.circleMarker(
+                [40.697371109485836, -73.91967935451052],
+                {"bubblingMouseEvents": true, "color": "#f7b6d2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7b6d2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.118701624499037, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_a58488208dfed7d79414a09ef43e919c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bd0aa8db897fce07ea311ba760d81b94 = $(`<div id="html_bd0aa8db897fce07ea311ba760d81b94" style="width: 100.0%; height: 100.0%;">Precinct 83: 13230 arrests</div>`)[0];
+                popup_a58488208dfed7d79414a09ef43e919c.setContent(html_bd0aa8db897fce07ea311ba760d81b94);
+            
+        
+
+        circle_marker_e6adf3f0928c7f41d8f051b7f2c313db.bindPopup(popup_a58488208dfed7d79414a09ef43e919c)
+        ;
+
+        
+    
+    
+            var circle_marker_7707fefe0d05df0694b4eed100919d3f = L.circleMarker(
+                [40.692922674775005, -73.98554733693305],
+                {"bubblingMouseEvents": true, "color": "#f7b6d2", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7b6d2", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.340900052008445, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_b140a8e01f7e5e728d35ecca41e5df20 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0463e077cc50a0ce569355f5e9b201f4 = $(`<div id="html_0463e077cc50a0ce569355f5e9b201f4" style="width: 100.0%; height: 100.0%;">Precinct 84: 14828 arrests</div>`)[0];
+                popup_b140a8e01f7e5e728d35ecca41e5df20.setContent(html_0463e077cc50a0ce569355f5e9b201f4);
+            
+        
+
+        circle_marker_7707fefe0d05df0694b4eed100919d3f.bindPopup(popup_b140a8e01f7e5e728d35ecca41e5df20)
+        ;
+
+        
+    
+    
+            var circle_marker_077f4d427a2aefc1289ff421e0ba2e8d = L.circleMarker(
+                [40.69114036466106, -73.9701521554018],
+                {"bubblingMouseEvents": true, "color": "#7f7f7f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7f7f7f", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.995105087649524, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_0b652f9a92eb59e1d009d8726181fada = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5f1c39d27ef878ef4d3e2cf3e2d61466 = $(`<div id="html_5f1c39d27ef878ef4d3e2cf3e2d61466" style="width: 100.0%; height: 100.0%;">Precinct 88: 6531 arrests</div>`)[0];
+                popup_0b652f9a92eb59e1d009d8726181fada.setContent(html_5f1c39d27ef878ef4d3e2cf3e2d61466);
+            
+        
+
+        circle_marker_077f4d427a2aefc1289ff421e0ba2e8d.bindPopup(popup_0b652f9a92eb59e1d009d8726181fada)
+        ;
+
+        
+    
+    
+            var circle_marker_a2a563eaa44a8907aac8e67100325436 = L.circleMarker(
+                [40.70696222252338, -73.94832214043227],
+                {"bubblingMouseEvents": true, "color": "#7f7f7f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7f7f7f", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.954630281151529, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_be35bb4ec86b80f22b75281f78a70f17 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1b2120df31601db2869733a7e2e7344a = $(`<div id="html_1b2120df31601db2869733a7e2e7344a" style="width: 100.0%; height: 100.0%;">Precinct 90: 11708 arrests</div>`)[0];
+                popup_be35bb4ec86b80f22b75281f78a70f17.setContent(html_1b2120df31601db2869733a7e2e7344a);
+            
+        
+
+        circle_marker_a2a563eaa44a8907aac8e67100325436.bindPopup(popup_be35bb4ec86b80f22b75281f78a70f17)
+        ;
+
+        
+    
+    
+            var circle_marker_0e1c4eb62a971475bf8ec4b2c5554358 = L.circleMarker(
+                [40.72436628772246, -73.95146655118113],
+                {"bubblingMouseEvents": true, "color": "#7f7f7f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7f7f7f", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.549209165723377, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_fbfad9b00952d494041eaca8b4667c63 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5ff63693fc78f8ed263fe8f36eab3890 = $(`<div id="html_5ff63693fc78f8ed263fe8f36eab3890" style="width: 100.0%; height: 100.0%;">Precinct 94: 5948 arrests</div>`)[0];
+                popup_fbfad9b00952d494041eaca8b4667c63.setContent(html_5ff63693fc78f8ed263fe8f36eab3890);
+            
+        
+
+        circle_marker_0e1c4eb62a971475bf8ec4b2c5554358.bindPopup(popup_fbfad9b00952d494041eaca8b4667c63)
+        ;
+
+        
+    
+    
+            var circle_marker_0f9ac8630b5579460799409bd50c78d9 = L.circleMarker(
+                [40.58778655776899, -73.81420136853335],
+                {"bubblingMouseEvents": true, "color": "#c7c7c7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c7c7c7", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.445957108330529, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_848c05ee16ce41c79ff5225bda55f532 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4219250ba797c16c9df123b2dde87129 = $(`<div id="html_4219250ba797c16c9df123b2dde87129" style="width: 100.0%; height: 100.0%;">Precinct 100: 5813 arrests</div>`)[0];
+                popup_848c05ee16ce41c79ff5225bda55f532.setContent(html_4219250ba797c16c9df123b2dde87129);
+            
+        
+
+        circle_marker_0f9ac8630b5579460799409bd50c78d9.bindPopup(popup_848c05ee16ce41c79ff5225bda55f532)
+        ;
+
+        
+    
+    
+            var circle_marker_755304b7339b4d9445ed43020191782e = L.circleMarker(
+                [40.60096887375325, -73.75795087348659],
+                {"bubblingMouseEvents": true, "color": "#c7c7c7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c7c7c7", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.266650350292165, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_433637c9f81bb32da7f5fbb72addab70 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e4017eafa14176f09d6d4e73b0963652 = $(`<div id="html_e4017eafa14176f09d6d4e73b0963652" style="width: 100.0%; height: 100.0%;">Precinct 101: 9501 arrests</div>`)[0];
+                popup_433637c9f81bb32da7f5fbb72addab70.setContent(html_e4017eafa14176f09d6d4e73b0963652);
+            
+        
+
+        circle_marker_755304b7339b4d9445ed43020191782e.bindPopup(popup_433637c9f81bb32da7f5fbb72addab70)
+        ;
+
+        
+    
+    
+            var circle_marker_4c876d878a11e299cbb6e9ae024c2105 = L.circleMarker(
+                [40.698409989851925, -73.83432644677855],
+                {"bubblingMouseEvents": true, "color": "#c7c7c7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c7c7c7", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.934775292929912, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_6678b63f349718ef94ca407b39993ccd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6ce920d99fc31b3cee0180d1183dacc6 = $(`<div id="html_6ce920d99fc31b3cee0180d1183dacc6" style="width: 100.0%; height: 100.0%;">Precinct 102: 14297 arrests</div>`)[0];
+                popup_6678b63f349718ef94ca407b39993ccd.setContent(html_6ce920d99fc31b3cee0180d1183dacc6);
+            
+        
+
+        circle_marker_4c876d878a11e299cbb6e9ae024c2105.bindPopup(popup_6678b63f349718ef94ca407b39993ccd)
+        ;
+
+        
+    
+    
+            var circle_marker_5299ea6e6bd8d8fd72b5e28ff25871f4 = L.circleMarker(
+                [40.70364297420043, -73.79480567642179],
+                {"bubblingMouseEvents": true, "color": "#c7c7c7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c7c7c7", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.82093798757916, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_17b45c1d68f9482ae0ebc4ff49488fab = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fedeeede6a3f6487bc6fa0dfe1b44251 = $(`<div id="html_fedeeede6a3f6487bc6fa0dfe1b44251" style="width: 100.0%; height: 100.0%;">Precinct 103: 24608 arrests</div>`)[0];
+                popup_17b45c1d68f9482ae0ebc4ff49488fab.setContent(html_fedeeede6a3f6487bc6fa0dfe1b44251);
+            
+        
+
+        circle_marker_5299ea6e6bd8d8fd72b5e28ff25871f4.bindPopup(popup_17b45c1d68f9482ae0ebc4ff49488fab)
+        ;
+
+        
+    
+    
+            var circle_marker_b734590e4a208bef5cb4dec3a7f4f7d4 = L.circleMarker(
+                [40.70711845715562, -73.89624733065665],
+                {"bubblingMouseEvents": true, "color": "#bcbd22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bcbd22", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.538562731361091, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_1c71210d70bf70986f4b818a8023066a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_94401550e3886ab2f43663aea453133e = $(`<div id="html_94401550e3886ab2f43663aea453133e" style="width: 100.0%; height: 100.0%;">Precinct 104: 11164 arrests</div>`)[0];
+                popup_1c71210d70bf70986f4b818a8023066a.setContent(html_94401550e3886ab2f43663aea453133e);
+            
+        
+
+        circle_marker_b734590e4a208bef5cb4dec3a7f4f7d4.bindPopup(popup_1c71210d70bf70986f4b818a8023066a)
+        ;
+
+        
+    
+    
+            var circle_marker_4937164f091c1221e8b5be69933fd83a = L.circleMarker(
+                [40.70678792730201, -73.7392703458928],
+                {"bubblingMouseEvents": true, "color": "#bcbd22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bcbd22", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.506868173891762, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_57b2dbfd39c16cdd3fb6cd6ec11be590 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_df5fda3fd992e631a0e25097f53ac241 = $(`<div id="html_df5fda3fd992e631a0e25097f53ac241" style="width: 100.0%; height: 100.0%;">Precinct 105: 15045 arrests</div>`)[0];
+                popup_57b2dbfd39c16cdd3fb6cd6ec11be590.setContent(html_df5fda3fd992e631a0e25097f53ac241);
+            
+        
+
+        circle_marker_4937164f091c1221e8b5be69933fd83a.bindPopup(popup_57b2dbfd39c16cdd3fb6cd6ec11be590)
+        ;
+
+        
+    
+    
+            var circle_marker_8ac7259de6dc2d3f29dfd30b72ffaab6 = L.circleMarker(
+                [40.678681817008986, -73.83146664096628],
+                {"bubblingMouseEvents": true, "color": "#bcbd22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bcbd22", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.535136292715759, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_41b77e6d41021bc4c5f201d76eea8e94 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4374bf624797b8c3c207577095eed8a9 = $(`<div id="html_4374bf624797b8c3c207577095eed8a9" style="width: 100.0%; height: 100.0%;">Precinct 106: 12467 arrests</div>`)[0];
+                popup_41b77e6d41021bc4c5f201d76eea8e94.setContent(html_4374bf624797b8c3c207577095eed8a9);
+            
+        
+
+        circle_marker_8ac7259de6dc2d3f29dfd30b72ffaab6.bindPopup(popup_41b77e6d41021bc4c5f201d76eea8e94)
+        ;
+
+        
+    
+    
+            var circle_marker_7a64f641a9e16d83fc919aa928eed931 = L.circleMarker(
+                [40.7241394524973, -73.80636506663025],
+                {"bubblingMouseEvents": true, "color": "#bcbd22", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#bcbd22", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.112552390858752, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_496dc9bc605751b883090810b316325f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b0f00f0d85ba6ac08dfc679394635875 = $(`<div id="html_b0f00f0d85ba6ac08dfc679394635875" style="width: 100.0%; height: 100.0%;">Precinct 107: 10607 arrests</div>`)[0];
+                popup_496dc9bc605751b883090810b316325f.setContent(html_b0f00f0d85ba6ac08dfc679394635875);
+            
+        
+
+        circle_marker_7a64f641a9e16d83fc919aa928eed931.bindPopup(popup_496dc9bc605751b883090810b316325f)
+        ;
+
+        
+    
+    
+            var circle_marker_83ebd7f53d340168f51f34cf15c45972 = L.circleMarker(
+                [40.74314979485178, -73.93226412113906],
+                {"bubblingMouseEvents": true, "color": "#dbdb8d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dbdb8d", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.307186343194543, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_6ab41dd11c2cb6741092df7e01b9e368 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_edbedffecab4d6a57c9eeadb4b70d5e8 = $(`<div id="html_edbedffecab4d6a57c9eeadb4b70d5e8" style="width: 100.0%; height: 100.0%;">Precinct 108: 9554 arrests</div>`)[0];
+                popup_6ab41dd11c2cb6741092df7e01b9e368.setContent(html_edbedffecab4d6a57c9eeadb4b70d5e8);
+            
+        
+
+        circle_marker_83ebd7f53d340168f51f34cf15c45972.bindPopup(popup_6ab41dd11c2cb6741092df7e01b9e368)
+        ;
+
+        
+    
+    
+            var circle_marker_a291923201932ba7edbcbd94d499b1bf = L.circleMarker(
+                [40.76339390827266, -73.82702563846884],
+                {"bubblingMouseEvents": true, "color": "#dbdb8d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dbdb8d", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.98644721142962, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_5b38e80bfb549daff65a08b9be339632 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4be29fe5419d8b5cc5add8aa3271dfa5 = $(`<div id="html_4be29fe5419d8b5cc5add8aa3271dfa5" style="width: 100.0%; height: 100.0%;">Precinct 109: 18287 arrests</div>`)[0];
+                popup_5b38e80bfb549daff65a08b9be339632.setContent(html_4be29fe5419d8b5cc5add8aa3271dfa5);
+            
+        
+
+        circle_marker_a291923201932ba7edbcbd94d499b1bf.bindPopup(popup_5b38e80bfb549daff65a08b9be339632)
+        ;
+
+        
+    
+    
+            var circle_marker_b2bcdfcbc574b0ea03606cba4e5567ee = L.circleMarker(
+                [40.74275145670227, -73.87023952368183],
+                {"bubblingMouseEvents": true, "color": "#dbdb8d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dbdb8d", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.30767583442959, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_4148406d86460acb7caf640b80cad7a7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d2abde98a5b403477f8aaa5cbc0e168f = $(`<div id="html_d2abde98a5b403477f8aaa5cbc0e168f" style="width: 100.0%; height: 100.0%;">Precinct 110: 18707 arrests</div>`)[0];
+                popup_4148406d86460acb7caf640b80cad7a7.setContent(html_d2abde98a5b403477f8aaa5cbc0e168f);
+            
+        
+
+        circle_marker_b2bcdfcbc574b0ea03606cba4e5567ee.bindPopup(popup_4148406d86460acb7caf640b80cad7a7)
+        ;
+
+        
+    
+    
+            var circle_marker_6c83e44fbc408509cb4f3b5bf5e05ccb = L.circleMarker(
+                [40.75804893624769, -73.76637868593416],
+                {"bubblingMouseEvents": true, "color": "#dbdb8d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#dbdb8d", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.2956527059687337, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_d93bcb89581535231cff2ceb7ccb73f4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c56a68b1379fef8550480b97d5417b9b = $(`<div id="html_c56a68b1379fef8550480b97d5417b9b" style="width: 100.0%; height: 100.0%;">Precinct 111: 4309 arrests</div>`)[0];
+                popup_d93bcb89581535231cff2ceb7ccb73f4.setContent(html_c56a68b1379fef8550480b97d5417b9b);
+            
+        
+
+        circle_marker_6c83e44fbc408509cb4f3b5bf5e05ccb.bindPopup(popup_d93bcb89581535231cff2ceb7ccb73f4)
+        ;
+
+        
+    
+    
+            var circle_marker_1e4f59aa5106b5c44969314ea8f00a32 = L.circleMarker(
+                [40.72348280031728, -73.85163453406464],
+                {"bubblingMouseEvents": true, "color": "#17becf", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#17becf", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.205831064337504, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_a2d770d9b4a48e7f1eaf4b03b7ce24b7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_676650293802bf007dc2c56ee67a605f = $(`<div id="html_676650293802bf007dc2c56ee67a605f" style="width: 100.0%; height: 100.0%;">Precinct 112: 8114 arrests</div>`)[0];
+                popup_a2d770d9b4a48e7f1eaf4b03b7ce24b7.setContent(html_676650293802bf007dc2c56ee67a605f);
+            
+        
+
+        circle_marker_1e4f59aa5106b5c44969314ea8f00a32.bindPopup(popup_a2d770d9b4a48e7f1eaf4b03b7ce24b7)
+        ;
+
+        
+    
+    
+            var circle_marker_72056ea66ac46abd2abab4a111c1283b = L.circleMarker(
+                [40.68164269797736, -73.7762958746612],
+                {"bubblingMouseEvents": true, "color": "#17becf", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#17becf", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.888610150824487, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_bb624fd21007d1a5c2b433b216749879 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c766c819a1511f0a3d9b876e8935052e = $(`<div id="html_c766c819a1511f0a3d9b876e8935052e" style="width: 100.0%; height: 100.0%;">Precinct 113: 23389 arrests</div>`)[0];
+                popup_bb624fd21007d1a5c2b433b216749879.setContent(html_c766c819a1511f0a3d9b876e8935052e);
+            
+        
+
+        circle_marker_72056ea66ac46abd2abab4a111c1283b.bindPopup(popup_bb624fd21007d1a5c2b433b216749879)
+        ;
+
+        
+    
+    
+            var circle_marker_8529e201c5426179fc39ef7225ae5d4a = L.circleMarker(
+                [40.76533054045793, -73.9212464326301],
+                {"bubblingMouseEvents": true, "color": "#17becf", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#17becf", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.722978554165264, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_74b6ac2a72239be76e959b44f78a2d33 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4b526159a0338c9c1186eb30857d72c0 = $(`<div id="html_4b526159a0338c9c1186eb30857d72c0" style="width: 100.0%; height: 100.0%;">Precinct 114: 19250 arrests</div>`)[0];
+                popup_74b6ac2a72239be76e959b44f78a2d33.setContent(html_4b526159a0338c9c1186eb30857d72c0);
+            
+        
+
+        circle_marker_8529e201c5426179fc39ef7225ae5d4a.bindPopup(popup_74b6ac2a72239be76e959b44f78a2d33)
+        ;
+
+        
+    
+    
+            var circle_marker_899f0c9fe64ad19cc29a61820aff202f = L.circleMarker(
+                [40.75519688433023, -73.87507922091604],
+                {"bubblingMouseEvents": true, "color": "#17becf", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#17becf", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.883195154036773, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_048e29c1f6845e69472878e38580e8f1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c9740d440e7fd08497e2c7c2105f41a1 = $(`<div id="html_c9740d440e7fd08497e2c7c2105f41a1" style="width: 100.0%; height: 100.0%;">Precinct 115: 18152 arrests</div>`)[0];
+                popup_048e29c1f6845e69472878e38580e8f1.setContent(html_c9740d440e7fd08497e2c7c2105f41a1);
+            
+        
+
+        circle_marker_899f0c9fe64ad19cc29a61820aff202f.bindPopup(popup_048e29c1f6845e69472878e38580e8f1)
+        ;
+
+        
+    
+    
+            var circle_marker_b446764c3c3c2745c2a783e85071d696 = L.circleMarker(
+                [40.63517279286262, -74.08376677919927],
+                {"bubblingMouseEvents": true, "color": "#9edae5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9edae5", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.570410254841374, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_a5314a6684311a4f00f461641ada1168 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a5c3b8bd6d662f66715d9b4a40b12ae8 = $(`<div id="html_a5c3b8bd6d662f66715d9b4a40b12ae8" style="width: 100.0%; height: 100.0%;">Precinct 120: 20358 arrests</div>`)[0];
+                popup_a5314a6684311a4f00f461641ada1168.setContent(html_a5c3b8bd6d662f66715d9b4a40b12ae8);
+            
+        
+
+        circle_marker_b446764c3c3c2745c2a783e85071d696.bindPopup(popup_a5314a6684311a4f00f461641ada1168)
+        ;
+
+        
+    
+    
+            var circle_marker_339083811d0bcfcf0ecfa502fb42f645 = L.circleMarker(
+                [40.62036558803254, -74.1527185264309],
+                {"bubblingMouseEvents": true, "color": "#9edae5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9edae5", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.797473001499068, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_38f49bf57e77bf00d152344217707efb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_29f8529165adda2813bdc13b7aec039f = $(`<div id="html_29f8529165adda2813bdc13b7aec039f" style="width: 100.0%; height: 100.0%;">Precinct 121: 12810 arrests</div>`)[0];
+                popup_38f49bf57e77bf00d152344217707efb.setContent(html_29f8529165adda2813bdc13b7aec039f);
+            
+        
+
+        circle_marker_339083811d0bcfcf0ecfa502fb42f645.bindPopup(popup_38f49bf57e77bf00d152344217707efb)
+        ;
+
+        
+    
+    
+            var circle_marker_d7ccf0c8c3b59db55f73a3b4b4729f75 = L.circleMarker(
+                [40.57778910541858, -74.10638815174939],
+                {"bubblingMouseEvents": true, "color": "#9edae5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9edae5", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.285373390032735, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_4749b006136e7bf3deef9933c50792f9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bee89f2cd771d1ee91b8a85a5232a839 = $(`<div id="html_bee89f2cd771d1ee91b8a85a5232a839" style="width: 100.0%; height: 100.0%;">Precinct 122: 8218 arrests</div>`)[0];
+                popup_4749b006136e7bf3deef9933c50792f9.setContent(html_bee89f2cd771d1ee91b8a85a5232a839);
+            
+        
+
+        circle_marker_d7ccf0c8c3b59db55f73a3b4b4729f75.bindPopup(popup_4749b006136e7bf3deef9933c50792f9)
+        ;
+
+        
+    
+    
+            var circle_marker_55a54b1bae914921aabe4ecf9ef3fc73 = L.circleMarker(
+                [40.527575978648045, -74.21942986004592],
+                {"bubblingMouseEvents": true, "color": "#9edae5", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9edae5", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.875393887478203, "stroke": true, "weight": 3}
+            ).addTo(map_5c992252bb8b8b9332b8719521e57dd4);
+        
+    
+        var popup_5e012b6b14de16a2f1104d0c12c39733 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2dca80e01a49289ab4a5f22cb03f2968 = $(`<div id="html_2dca80e01a49289ab4a5f22cb03f2968" style="width: 100.0%; height: 100.0%;">Precinct 123: 5067 arrests</div>`)[0];
+                popup_5e012b6b14de16a2f1104d0c12c39733.setContent(html_2dca80e01a49289ab4a5f22cb03f2968);
+            
+        
+
+        circle_marker_55a54b1bae914921aabe4ecf9ef3fc73.bindPopup(popup_5e012b6b14de16a2f1104d0c12c39733)
+        ;
+
+        
+    
+</script>
+</html>
